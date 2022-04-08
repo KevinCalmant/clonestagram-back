@@ -14,9 +14,9 @@ describe('AppService', () => {
   });
 
   describe('getData', () => {
-    it('should return "Welcome to clonestagram-back!"', () => {
+    it('should return "Welcome to clonestagram-gateway!"', () => {
       expect(service.getData()).toEqual({
-        message: 'Welcome to clonestagram-back!',
+        message: 'Welcome to clonestagram-gateway!',
       });
     });
   });

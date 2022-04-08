@@ -1,16 +1,16 @@
 {
-  "root": "apps/clonestagram-back",
-  "sourceRoot": "apps/clonestagram-back/src",
+  "root": "apps/clonestagram-gateway",
+  "sourceRoot": "apps/clonestagram-gateway/src",
   "projectType": "application",
   "targets": {
     "build": {
       "executor": "@nrwl/node:webpack",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/clonestagram-back",
-        "main": "apps/clonestagram-back/src/main.ts",
-        "tsConfig": "apps/clonestagram-back/tsconfig.app.json",
-        "assets": ["apps/clonestagram-back/src/assets"]
+        "outputPath": "dist/apps/clonestagram-gateway",
+        "main": "apps/clonestagram-gateway/src/main.ts",
+        "tsConfig": "apps/clonestagram-gateway/tsconfig.app.json",
+        "assets": ["apps/clonestagram-gateway/src/assets"]
       },
       "configurations": {
         "production": {
@@ -19,8 +19,8 @@
           "inspect": false,
           "fileReplacements": [
             {
-              "replace": "apps/clonestagram-back/src/environments/environment.ts",
-              "with": "apps/clonestagram-back/src/environments/environment.prod.ts"
+              "replace": "apps/clonestagram-gateway/src/environments/environment.ts",
+              "with": "apps/clonestagram-gateway/src/environments/environment.prod.ts"
             }
           ]
         }
@@ -29,21 +29,21 @@
     "serve": {
       "executor": "@nrwl/node:node",
       "options": {
-        "buildTarget": "clonestagram-back:build"
+        "buildTarget": "clonestagram-gateway:build"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/clonestagram-back/**/*.ts"]
+        "lintFilePatterns": ["apps/clonestagram-gateway/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/clonestagram-back"],
+      "outputs": ["coverage/apps/clonestagram-gateway"],
       "options": {
-        "jestConfig": "apps/clonestagram-back/jest.config.js",
+        "jestConfig": "apps/clonestagram-gateway/jest.config.js",
         "passWithNoTests": true
       }
     }

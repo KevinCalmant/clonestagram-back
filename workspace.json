@@ -1,6 +1,6 @@
 {
   "version": 2,
   "projects": {
-    "clonestagram-back": "apps/clonestagram-back"
+    "clonestagram-gateway": "apps/clonestagram-gateway"
   }
 }
