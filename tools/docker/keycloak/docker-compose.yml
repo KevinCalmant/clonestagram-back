@@ -1,0 +1,51 @@
+version: '2'
+services:
+  ui:
+    container_name: 'ui'
+    image: 'bdparrish/ui:0.1'
+    build:
+      context: .
+      dockerfile: ./ui/Dockerfile
+    ports:
+      - "8085:80"
+    depends_on:
+      - "postgres"
+      - "keycloak"
+    networks:
+      - auth-network
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+
+  postgres:
+    container_name: postgres
+    image: 'postgres'
+    environment:
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    networks:
+      - auth-network
+
+  keycloak:
+    container_name: keycloak
+    image: jboss/keycloak
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      DB_VENDOR: "POSTGRES"
+      DB_ADDR: postgres
+      DB_PORT: 5432
+      DB_USER: keycloak
+      DB_PASSWORD: password
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: password
+      KEYCLOAK_FRONTEND_URL=http://localhost:8080/auth
+    restart: always
+    networks:
+      - auth-network
+
+networks:
+  auth-network:
+    driver: bridge
