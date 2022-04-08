@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
-    "clonestagram-gateway": "apps/clonestagram-gateway"
+    "clonestagram-gateway": "apps/clonestagram-gateway",
+    "clonestagram-timeline": "apps/clonestagram-timeline"
   }
 }
