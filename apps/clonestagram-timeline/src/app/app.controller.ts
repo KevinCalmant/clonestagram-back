@@ -1,13 +1,18 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Logger } from '@nestjs/common';
 
-import { AppService } from './app.service';
+import PostService from "./post/post.service";
+import { EventPattern } from "@nestjs/microservices";
+import { PostModel } from "./post/post.schema";
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  private _logger = new Logger(AppController.name);
 
-  @Get()
-  getData() {
-    return this.appService.getData();
+  constructor(private readonly _postService: PostService) {}
+
+  @EventPattern('GET_POSTS')
+  getPosts(): Promise<PostModel[]> {
+    this._logger.log('Handling Event - GET_POSTS');
+    return this._postService.findAll();
   }
 }
