@@ -1,0 +1,52 @@
+{
+  "root": "apps/clonestagram-back",
+  "sourceRoot": "apps/clonestagram-back/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/clonestagram-back",
+        "main": "apps/clonestagram-back/src/main.ts",
+        "tsConfig": "apps/clonestagram-back/tsconfig.app.json",
+        "assets": ["apps/clonestagram-back/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/clonestagram-back/src/environments/environment.ts",
+              "with": "apps/clonestagram-back/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "clonestagram-back:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/clonestagram-back/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/clonestagram-back"],
+      "options": {
+        "jestConfig": "apps/clonestagram-back/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
