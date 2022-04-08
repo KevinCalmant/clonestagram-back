@@ -1,4 +1,4 @@
-import { Inject, Injectable, Logger, Post } from "@nestjs/common";
+import { Inject, Injectable, Logger } from "@nestjs/common";
 import { ClientProxy } from "@nestjs/microservices";
 import { Observable } from "rxjs";
 import PostDto from "./model/post.dto";

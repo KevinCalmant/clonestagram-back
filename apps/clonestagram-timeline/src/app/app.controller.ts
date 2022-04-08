@@ -1,4 +1,4 @@
-import { Controller, Get, Logger } from '@nestjs/common';
+import { Controller, Logger } from '@nestjs/common';
 
 import PostService from "./post/post.service";
 import { EventPattern } from "@nestjs/microservices";
